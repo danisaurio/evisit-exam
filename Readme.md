@@ -12,7 +12,7 @@ git clone https://github.com/danisaurio/evisit-exam.git
 # install the dependencies of the project
 npm i
 
-# run the server!
+# run the tests!
 npm test
 ```
 
