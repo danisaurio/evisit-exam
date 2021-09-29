@@ -40,16 +40,26 @@ In the language of your choice, please implement these functions:
 
 ## NOTES:
  ### What would you do differently if you had more time?
-I think that the 2 for loops are pretty similar so I feel there must be a way to unite them and interate through the list just one time, not two, I would keep trying to do that if I had mode time. Also, i'd add more test cases
+I think that the 2 for loops are pretty similar so I feel there must be a way to unite them and interate through the list just one time. I would keep trying to do that if I had mode time. Also, i'd add more test cases
  ### What is the runtime complexity of each function?
  request_handled => O(n)
+
  top100 => O(1)
+
  clear => O(1)
  ### How does your code work?
- I'm using a class that has 2 properties, hashOfIpAddresses that is a hash map that keeps track of addresses and number of requests made byeach and highestTrafficIpAddresses, that keeps track of the top 100 address with mosts requestsThe complex part of the implementation is a method of the ipTracker class called 'updateTop100' that, on each new request, updated the 'top100' list,to do that, instear of sorting all its values in nlogn complexity, it trusts on the fact that the list is always sorted and justlooks for "the right place" for this new value to be inserted. Also, it drops the last value if the list is over 100 elements with this approach I was able to keep a complexity on O(n)
+ I'm using a class (`IpTracker`) that has 2 properties:
+
+- `hashOfIpAddresses` : Hash map that keeps track of addresses and number of requests made by each
+- `highestTrafficIpAddresses`: Keeps track of the top 100 address with mosts requests
+
+The complex part of the implementation is a method of the `ipTracker` class called `updateTop100`. This method, on each new request updates the `top100` list. To do that, instead of sorting all its values in `O(n logn)`, relays on the fact that the list is always sorted and just looks for "the right place" for this new value to be inserted. Also, it drops the last value if the list is over 100 elements. With this approach I was able to keep a complexity on` O(n)`
  ### What other approaches did you decide not to pursue?
- I tried to use a BST, but I run into 2 possible approaches: order by IP by its ascii value (but then getting the top100 would be expensive) or ordering bythe number of requests (wich woulkd lead to duplicated keays and would make adding a new node really cumbersome). Also, I thought about using a minHeapbut in that approach I'd have trouble when, for example, the 2 last values are the same, I'd always be replacing the very last value, but notcheking the next ones
+ I tried to use a `BST`, but I run into 2 possible approaches: 
+  - Order by IP by its ascii value (but then getting the top100 would be expensive)
+  - Ordering by the number of requests (wich woulkd lead to duplicated keys and would make adding a new node really cumbersome). 
+Also, I thought about using a `minHeap` but in that approach I'd have trouble when, for example, the 2 last values are the same, I'd always be replacing the very last value, but not cheking the next ones.
  ### How would you test this?
- I'd like to mock a service that makes over 20mill requests (load test) and would make some unit tests that make sure that the sensitive methods(request_handled and top100) keep performing under a certain threshold (<300ms) even if new changes are introduced
+ I'd like to mock a service that makes over 20mill requests (load test) and would make some unit tests that make sure that the sensitive methods(`request_handled` and `top100`) keep performing under a certain threshold (<300ms) even if new changes are introduced
 
 
