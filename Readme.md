@@ -42,11 +42,11 @@ In the language of your choice, please implement these functions:
  ### What would you do differently if you had more time?
 I think that the 2 for loops are pretty similar so I feel there must be a way to unite them and interate through the list just one time. I would keep trying to do that if I had mode time. Also, i'd add more test cases
  ### What is the runtime complexity of each function?
- `request_handled()` => O(n)
+ - `request_handled()` => O(n)
 
- `top100()` => O(1)
+ - `top100()` => O(1)
 
- `clear()` => O(1)
+ - `clear()` => O(1)
  ### How does your code work?
  I'm using a class (`IpTracker`) that has 2 properties:
 
